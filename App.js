@@ -41,13 +41,33 @@ function App() {
           const todo = {
             id: nextID.current,
             text,
-            checked:false,
+            checked:true,
           };
           setTodos(todos.concat(todo));
           nextID.current++;
         },
         [todos],
       );
+
+  
+  const onRemove = useCallback(
+    (id) => {
+      setTodos(todos.filter((todo)=> todo.id !== id));
+    },
+    [todos],
+  );
+
+  
+  const onToggle = useCallback(
+    (id)=> {
+      setTodos(
+        todos.map((todo) => 
+          todo.id === id ? {...todo, checked: !todo.checked} : todo,
+      ),
+      );
+    },
+    [todos],
+  );
 
   return (
     <div className="App">
@@ -58,33 +78,35 @@ function App() {
         <img src={ppumi} className='icon' />
      </div>
     
-    <div  style={{height:'200px', gap:"20px"}}>
-    <div className='center' style={{height:'100px'}}> 
-      <div className='center' style={{gap:"20px"}}>
-        <FeatureButton/>
-        <FeatureButton/>
-      </div>
+    <div  style={{height:'300px'}}>
+        <div className='center' style={{height:'150px'}}> 
+        <div className='center'>
+            <FeatureButton/>
+        </div>
+        </div>
+        
+        <TodoInsert onInsert={onInsert} style={{alignItems:'center'}}/>
+        
+
     </div>
-    <div className='center'>
-        <TodoInsert onInsert={onInsert}/>
       
-      </div>
-    </div>
-      
-<div className='center'>
-    
     <div className='whitebox' >
           <p style={{fontSize : '50px',fontFamily:'Recipekorea'}}>To-Do List</p>
-          <div className='downcenter' style={{display:'inline', margin: '0 auto'}}>
-          
-          <TodoList
-            todos={todos}
-          />
+          <div>
+            <TodoList
+              todos={todos}
+              onRemove={onRemove}
+              onToggle={onToggle} />
           </div>
-            <div/>
-        </div>
+      <div/>
     </div>
+    
+    <div style={{height:'150px'}}>
 
+    </div>
+    <div style={{padding:'25px', fontSize:'25px',fontFamily:'ShinDongYup Handwriting',fontWeight:1000}}>
+    Created by seonduya
+    </div>
 
 </div>
     
