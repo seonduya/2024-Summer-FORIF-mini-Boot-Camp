@@ -2,8 +2,6 @@ import React from "react";
 import Checked from '../assets/img/check.svg'
 import Unchecked from '../assets/img/uncheck.svg'
 import Delete from '../assets/img/delete.svg'
-import { useState } from "react";
-import classNames from 'classnames';
 
 
 function TodoItem({todo, onRemove, onToggle}) {
@@ -15,12 +13,12 @@ function TodoItem({todo, onRemove, onToggle}) {
         alignItems:'cneter',
         width: '739px',
         height: '122px',
-        grid:"",
+        
         backgroundColor:'#FFFFFF',
         border:'#000000',
         borderRadius:'16px',
         padding:'15px',
-        margin:'10px',
+        margin:'20px -2px',
         boxShadow: '0px 8px 8px 0px rgba(67, 105, 150, 0.10)',
         
     }
@@ -28,10 +26,8 @@ function TodoItem({todo, onRemove, onToggle}) {
     const itemboxchecked ={
         display:'flex',
         alignItems:'cneter',
-
         width: '739px',
         height: '122px',
-        grid:"",
 
         color:'#BCBCBC',
         backgroundColor:'#F7F7F7',
@@ -39,7 +35,7 @@ function TodoItem({todo, onRemove, onToggle}) {
 
         borderRadius:'16px',
         padding:'15px',
-        margin:'10px',
+        margin:'20px 2px',
         boxShadow: '0px 8px 8px 0px rgba(67, 105, 150, 0.10)',
 
         textDecoration: 'line-through',   
@@ -50,7 +46,7 @@ function TodoItem({todo, onRemove, onToggle}) {
             {checked ? 
             <div className="TodoItem" style={itembox}>
                 <div className='center' style={{gap:'35px'}}>
-                    <img src={Unchecked} style={{width: '50px', height: '50px'}} onClick={()=> onToggle(checked)}/>
+                    <img src={Unchecked} style={{width: '50px', height: '50px'}} onClick={()=> onToggle(id)}/>
                     <div style={{width:'528px', textAlign:'left'}}>
                         <p style={{fontSize:'30px',fontWeight: 700}}>{text}</p>
                         <p style={{fontSize:'23px', color:'#BCBCBC'}}>date</p>
@@ -61,7 +57,7 @@ function TodoItem({todo, onRemove, onToggle}) {
                 :
                 <div className="TodoItem" style={itemboxchecked}>
                 <div className='center' style={{gap:'35px'}}>
-                    <img src={Checked} style={{width: '50px', height: '50px'}} onClick={()=> onToggle(checked)}/>
+                    <img src={Checked} style={{width: '50px', height: '50px'}} onClick={()=> onToggle(id)}/>
                     <div style={{width:'528px', textAlign:'left'}}>
                         <p style={{fontSize:'30px',fontWeight: 700}}>{text}</p>
                         <p style={{fontSize:'23px', color:'#BCBCBC'}}>date</p>

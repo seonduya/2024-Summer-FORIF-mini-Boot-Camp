@@ -3,11 +3,10 @@ import '../App.css';
 
 function TodoInsert({onInsert}) {
     const fieldstyle = {
-        
-        alignItems: 'center',
         width: '617px',
         borderRadius:'50px',
         padding:'35px',
+        margin:'15px',
         
         backgroundColor:'#F1F1F1',
         border:'#FFF',
@@ -38,8 +37,7 @@ function TodoInsert({onInsert}) {
 
     return (
         <form className="TodoInsert" onSubmit={onSubmit}>
-            
-            <div className='center' style={{gap:'20px'}}>
+            <div>
                 <input 
                     onChange={onChange}
                     value={value}

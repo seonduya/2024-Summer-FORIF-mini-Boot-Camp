@@ -8,6 +8,8 @@ function TodoList({todos, onRemove, onToggle}){
                 <TodoItem
                     todo={todo}
                     key={todo.id}
+                    onRemove={onRemove}
+                    onToggle={onToggle}
                 />
             ))}
 
