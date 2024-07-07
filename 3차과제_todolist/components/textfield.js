@@ -30,24 +30,24 @@ function TodoInsert({onInsert}) {
         fontWeight: 700,
     };
     const [value, setValue]= useState('');
-    const onChange = useCallback(e=>{
-        setValue(e.target.value);
-    },[])
-    const onSubmit = useCallback(
-        e=> {
-            onInsert(value);
-            setValue('');
-            e.preventDefault();
-        },[onInsert,value])
+    const onChange = useCallback( e=>
+        {setValue(e.target.value);},[])
+    const onSubmit = useCallback
+            (e=> {onInsert(value);setValue('');e.preventDefault(); },
+                [onInsert,value])
 
     return (
         <form className="TodoInsert" onSubmit={onSubmit}>
+            
+            <div className='center' style={{gap:'20px'}}>
                 <input 
-                onChange={onChange}
-                value={value}
-                style={fieldstyle} placeholder="해야할 일을 적어주세요."></input>
+                    onChange={onChange}
+                    value={value}
+                    style={fieldstyle} placeholder="해야할 일을 적어주세요.">
+                </input>
                 <button type="submit" style={buttonStyle}>Enter</button>
-                <div className='center' style={{gap:'20px'}}></div>
+            </div>
+                
         </form>
     );
 };
