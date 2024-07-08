@@ -1,5 +1,6 @@
 import './App.css';
-import { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useRef, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Header from './components/header';
 import Navigation from './components/navbutton';
@@ -7,7 +8,13 @@ import TodoList from './components/todolist';
 import TodoInsert from './components/textfield';
 import FeatureButton from './components/feature';
 
+import Main from './components/Main';
+import Sub from './components/Sub';
+import { ThemeProvider } from './context/themeProvider';
+import { Globalstyle } from './theme/GlobalStyle';
+
 import ppumi from './assets/img/ppumi.png';
+
 
 function App() {
 
@@ -67,7 +74,23 @@ function App() {
     <div className="App">
      
      <Header/> 
+
+     <Router>
+      <p>라우터의 시작</p>
+        <ThemeProvider>
+          <Globalstyle/>
+          <Suspense fallboack={<div>...loading</div>}>
+            <Routes>
+              <Route exact path="/" component={Main}/>
+              <Route exact path="/sub" component={Sub}/>
+            </Routes>
+          </Suspense>
+        </ThemeProvider>
+        <p>라우터의 끝</p>
+     </Router>
+
      <Navigation/>
+
      <div style={{height:'500px'}}>
         <img src={ppumi} className='icon' />
      </div>
