@@ -26,7 +26,7 @@ function useTheme() {
 
     const toggleTheme = useCallback(()=> {
         if (ThemeMode === "light"){
-            setThemeMode("dark")
+            setThemeMode("dark");
             window.localStorage.setItem('theme','dark');
         }
         else{

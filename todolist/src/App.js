@@ -76,17 +76,16 @@ function App() {
      <Header/> 
 
      <Router>
-      <p>라우터의 시작</p>
         <ThemeProvider>
           <Globalstyle/>
-          <Suspense fallboack={<div>...loading</div>}>
+          <Suspense fallback={<div>...loading</div>}>
             <Routes>
-              <Route exact path="/" component={Main}/>
-              <Route exact path="/sub" component={Sub}/>
+              <Route exact path="/" element={<Main/>}/>
+              <Route exact path="/sub" element={<Sub/>}/>
             </Routes>
+            <p>suspense</p>
           </Suspense>
         </ThemeProvider>
-        <p>라우터의 끝</p>
      </Router>
 
      <Navigation/>

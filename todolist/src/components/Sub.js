@@ -22,4 +22,6 @@ export default Sub;
 
 const StyledButton = styled.button`
     width:240px;
+    height:56px;
+    color: ${props => props.theme ==='light' ?'#000000':'#bbb'};
 `

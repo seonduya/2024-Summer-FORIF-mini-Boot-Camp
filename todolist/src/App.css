@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   align-items: center;
-  background-color: #9DCAFF;
   font-family: Pretendard;
 }
 
@@ -9,6 +8,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto; /*수평 - 중간 배열*/
+  
 }
 .downcenter{
   align-items: center;
