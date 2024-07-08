@@ -3,17 +3,11 @@ import { useCallback, useState, useRef } from 'react';
 
 import Header from './components/header';
 import Navigation from './components/navbutton';
-
-import TodoItem from './components/todolistitem';
 import TodoList from './components/todolist';
-
 import TodoInsert from './components/textfield';
 import FeatureButton from './components/feature';
 
 import ppumi from './assets/img/ppumi.png';
-import logo from './assets/img/logo.png';
-import { render } from '@testing-library/react';
-
 
 function App() {
 
