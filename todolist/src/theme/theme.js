@@ -1,3 +1,4 @@
+import bgIMG from '../assets/img/backgrounddarkv.jpeg'
 export const lightTheme = {
     bgColor: '#9DCAFF',
     textColor:'#323232',
@@ -5,9 +6,9 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-    bgImage: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F277F3D44583C95FC2A",
-    textColor:'',
-    borderColor:'',
+    bgColor:'#222F3F',
+    textColor:'#FFFFFF',
+    // background-image: url(${bgIMG}),
 
 };
 

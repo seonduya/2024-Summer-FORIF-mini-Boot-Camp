@@ -12,12 +12,14 @@ function ThemeToggle({toggle, mode}){
 export default ThemeToggle;
 
 const ToggleWrapper = styled.button`
-    position:fiexd;
+    position:fixed;
     z-index: 999999; /* ?? */
-    bottom: 4%;
+    top: 4%;
     right : 3%;
 
-    background-color:#FFFFFF;
+    background-color: ${
+        props => props.mode ==='dark'? '#000000':'#FFFFFF'
+    };
     border: ${props => props.theme.borderColor};
     font-size:30px;
 

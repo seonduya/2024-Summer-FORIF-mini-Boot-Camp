@@ -7,11 +7,11 @@ const ThemeContext = createContext({});
 
 const ThemeProvider = ( {children} )=>{
     const LocalTheme = window.localStorage.getItem('theme')|| 'light';
-    const [ThemeMode, setThemeMode] = useState(LocalTheme);
-    const themeObject = ThemeMode === 'light' ? lightTheme : darkTheme;
+    const [themeMode, setThemeMode] = useState(LocalTheme);
+    const themeObject = themeMode === 'light' ? lightTheme : darkTheme;
 
     return(
-        <ThemeContext.Provider value={{ ThemeMode, setThemeMode}}>
+        <ThemeContext.Provider value={{ themeMode, setThemeMode}}>
             <StyledProvider theme= {themeObject}>
                 { children }
             </StyledProvider>
@@ -22,10 +22,10 @@ const ThemeProvider = ( {children} )=>{
 function useTheme() {
     const context = useContext(ThemeContext);
     
-    const {ThemeMode, setThemeMode} = context;
+    const {themeMode, setThemeMode} = context;
 
     const toggleTheme = useCallback(()=> {
-        if (ThemeMode === "light"){
+        if (themeMode === "light"){
             setThemeMode("dark");
             window.localStorage.setItem('theme','dark');
         }
@@ -33,11 +33,13 @@ function useTheme() {
             setThemeMode("light");
             window.localStorage.setItem('theme','light');
         };
-    }, [ThemeMode]);
 
-    return [ThemeMode, toggleTheme];
+    const asd = window.localStorage.getItem('theme');
+    console.log(asd)
+    }, [themeMode]);
+
+    return [themeMode, toggleTheme];
 }
 
 export {ThemeProvider, useTheme };
 
-export default ThemeProvider;

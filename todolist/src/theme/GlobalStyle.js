@@ -19,5 +19,15 @@ export const Globalstyle = createGlobalStyle`
         word-wrap:break-word;
         text-rendering:optimizeLegibility;
         -webkit-font-smoothing: antialiased;
+
+        // white:"#FFFFFF",
+        // black:"#323232",
+        // navy:"#436996",
+        // sky:"#9DCAFF",
+        // blue:"#3893FF",
+
+        // whitec:"#FFFFFF",
+        // blackc:"#323232",
+
     }
 `;

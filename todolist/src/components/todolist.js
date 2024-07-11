@@ -3,9 +3,9 @@ import TodoItem from '../components/todolistitem';
 
 function TodoList({todos, onRemove, onToggle}){
     return (
-        <ul className="TodoList">
+        <ul className="TodoList" style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
             {todos.map((todo)=>(
-                <TodoItem
+                <TodoItem 
                     todo={todo}
                     key={todo.id}
                     onRemove={onRemove}
