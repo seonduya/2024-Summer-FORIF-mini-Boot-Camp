@@ -5,12 +5,13 @@ import {FlexContainer} from "../style/styles";
 import ThemeToggle from "../theme/ThemeToggle";
 
 const AppLayout = ({children}) => {
-    const {themeMode, toggleTheme} = useTheme();
+    const [themeMode, toggleTheme] = useTheme();
     return(
         <WrapContainer>
             <ThemeToggle toggle={toggleTheme} mode={themeMode}>
                 DarkMode
             </ThemeToggle>
+
             <FlexContainer>{children}</FlexContainer>
         </WrapContainer>
     )

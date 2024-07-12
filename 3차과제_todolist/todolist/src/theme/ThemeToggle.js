@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 function ThemeToggle({toggle, mode}){
-    console.log("themeToggle:",mode);
     return (
         <ToggleWrapper onClick={toggle} mode={mode}>
-        {mode === 'dark' ? '🌝':'🔅'}
+            {mode === 'dark' ? '🌝':'🔅'}
         </ToggleWrapper>
     );
 }
@@ -24,9 +23,9 @@ const ToggleWrapper = styled.button`
     border: ${props => props.theme.borderColor};
     font-size:30px;
 
-    display:flex;
+    dixplay:flex;
     justify-content: center;
-    algin-items:center;
+    algin-item:center;
 
     width:96px;
     height:48px;

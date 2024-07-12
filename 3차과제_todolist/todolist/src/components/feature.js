@@ -1,6 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 
-function FeatureButton(){
+function FeatureButton(feature){
+
+    const {id,text,url} = feature;
+
     const featuresytle ={
         
         width:'180px',
@@ -13,11 +16,11 @@ function FeatureButton(){
         fontSize:'20px',
         fontWeight:600,
         color:'#323232',
-
     };
+    
     return(
         <div className='' style={featuresytle}>
-            To-do list 기능
+            {id} {text} {url} 안녕
         </div>
     )
 

@@ -18,8 +18,9 @@ import ppumi from './assets/img/ppumi.png';
 
 
 function App() {
-  const [theme,setTheme] = useState(window.localStorage.getItem('theme'));
-  
+  const {themeMode, toggleTheme}  = useTheme();
+  console.log(themeMode);  
+
   const [todos, setTodos] = useState([
         {
             id: 1,
@@ -72,29 +73,22 @@ function App() {
     [todos],
   );
 
-      
-
-  const themeMode  = useTheme();
-  const toggleTheme  = useTheme();
+  
+  
   return (
     <div className="App">
-      
      <Header themeMode={toggleTheme}/> 
      <Router>
-        <ThemeProvider>
           <Globalstyle/>
           <Suspense fallback={<div>...loading</div>}>
             <Routes>
               <Route exact path="/" element={<Main themeMode={themeMode}/>}/>
+              
               <Route exact path="/sub" element={<Sub/>}/>
             </Routes>
             <Navigation  mode={themeMode} />
           </Suspense>
-          
-        </ThemeProvider>
      </Router>
-
-     
 
      <div style={{height:'500px'}}>
         <img src={ppumi} className='icon' />
@@ -136,4 +130,10 @@ function App() {
   );
 }
 
-export default App;
+export default function AppWrapper(){
+  return(
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  )
+};

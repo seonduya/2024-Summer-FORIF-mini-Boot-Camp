@@ -29,7 +29,7 @@ function Navigation({mode}) {
 
     
     return (
-        <button style={mode ==='light' ? buttonStyle : buttonStyledark}>
+        <button style={mode ==='dark' ? buttonStyle : buttonStyledark}>
             front-end 배우기
         </button>
     );

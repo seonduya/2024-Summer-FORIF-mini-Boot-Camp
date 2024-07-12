@@ -1,22 +1,25 @@
 import './App.css';
-import { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useRef, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Header from './components/header';
 import Navigation from './components/navbutton';
-
-import TodoItem from './components/todolistitem';
 import TodoList from './components/todolist';
-
 import TodoInsert from './components/textfield';
 import FeatureButton from './components/feature';
+import FeatureList from './components/featurelist';
+
+import Main from './components/Main';
+import Sub from './components/Sub';
+import { ThemeProvider, useTheme } from './context/themeProvider';
+import { Globalstyle } from './theme/GlobalStyle';
 
 import ppumi from './assets/img/ppumi.png';
-import logo from './assets/img/logo.png';
-import { render } from '@testing-library/react';
 
 
 function App() {
-
+  const [theme,setTheme] = useState(window.localStorage.getItem('theme'));
+  
   const [todos, setTodos] = useState([
         {
             id: 1,
@@ -69,11 +72,30 @@ function App() {
     [todos],
   );
 
+      
+
+  const themeMode  = useTheme();
+  const toggleTheme  = useTheme();
   return (
     <div className="App">
+      
+     <Header themeMode={toggleTheme}/> 
+     <Router>
+        <ThemeProvider>
+          <Globalstyle/>
+          <Suspense fallback={<div>...loading</div>}>
+            <Routes>
+              <Route exact path="/" element={<Main themeMode={themeMode}/>}/>
+              <Route exact path="/sub" element={<Sub/>}/>
+            </Routes>
+            <Navigation  mode={themeMode} />
+          </Suspense>
+          
+        </ThemeProvider>
+     </Router>
+
      
-     <Header/> 
-     <Navigation/>
+
      <div style={{height:'500px'}}>
         <img src={ppumi} className='icon' />
      </div>
@@ -82,6 +104,7 @@ function App() {
         <div className='center' style={{height:'150px'}}> 
         <div className='center'>
             <FeatureButton/>
+            <FeatureList/>
         </div>
         </div>
         
@@ -91,7 +114,7 @@ function App() {
     </div>
       
     <div className='whitebox' >
-          <p style={{fontSize : '50px',fontFamily:'Recipekorea'}}>To-Do List</p>
+          <p style={{color:'black',fontSize : '50px',fontFamily:'Recipekorea'}}>To-Do List</p>
           <div>
             <TodoList
               todos={todos}
@@ -105,7 +128,7 @@ function App() {
 
     </div>
     <div style={{padding:'25px', fontSize:'25px',fontFamily:'ShinDongYup Handwriting',fontWeight:1000}}>
-    Created by seonduya
+    Created by seonduya 
     </div>
 
 </div>

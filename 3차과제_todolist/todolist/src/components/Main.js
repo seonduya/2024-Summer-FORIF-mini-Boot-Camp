@@ -5,11 +5,12 @@ import AppLayout from "./AppLayout";
 
 
 const Main = ()=>{
+    const temp = window.localStorage.getItem('theme');
 
-    const {themeMode}= useTheme();
+    const [themeMode,setThemeMode]= useState(temp);
+
+    console.log(themeMode)
     const CurrentMode = themeMode ==='light' ? '아침이양🔅':'밤이양🌝';
-
-    console.log(themeMode);
 
     return(
         <AppLayout> 
@@ -21,6 +22,6 @@ const Main = ()=>{
 export default Main;
 
 const ColoredText = styled.span`
-    color: #E6B74A;
+    color: '#E6B74A';
 
 `

@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   align-items: center;
-  background-color: #9DCAFF;
   font-family: Pretendard;
 }
 
@@ -9,6 +8,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto; /*수평 - 중간 배열*/
+  
 }
 .downcenter{
   align-items: center;
@@ -27,11 +27,12 @@
 
 .whitebox {
   width: 819px;
+  
   background: rgba(255, 255, 255, 0.70);
   border-radius: 32px;
   border: 2px solid #FFF; 
   
-  padding: 20px;
+  padding: 50px 20px;
   margin: 0px auto; /*수평 - 중간 배열*/
   flex-shrink: 0;
   
