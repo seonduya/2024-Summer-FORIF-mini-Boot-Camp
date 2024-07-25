@@ -26,20 +26,12 @@ function PostItem(){
         <Link to='/mypost' style={postItemStyle}>
             {datalist.map((item,index)=>(
                 <tr key={index}>
-                    <td>{item.contents}</td>
-                    <td>{item.yesno}</td>
+                    <td>{item.title}</td>
+                    <td>{item.content}</td>
                     <p onClick={()=> handleEdit(item.id)}>수정하기| </p>
                     <p onClick={()=> handleDelete(item.id)}>삭제하기</p>
                 </tr>
             ))}
-            <div style={{textAlign:'left', width:'70%'}}>
-            <div style={{fontSize:'20pt'}}>제목입니다</div>
-            <div>2020.00.00</div>
-            </div>
-            <div>
-                 <p onClick={()=> handleEdit()}>수정하기| </p>
-                 <p onClick={()=> handleDelete()}>삭제하기</p>
-            </div>
         </Link>
     );
 };

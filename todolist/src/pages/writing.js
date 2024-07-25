@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import Navigation from "../components/navbutton";
 
@@ -11,17 +11,20 @@ export default function Writing(){
     const {handleAdd} = useContext(PostsContext);
     const navigate= useNavigate();
 
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
     const contentRef= useRef();
-    const yesnoRef= useRef();
+    // const yesnoRef= useRef();
 
     function handleSubmit(event){
         event.preventDefault();
         const post = {
-            contents: contentRef.current.value,
-            yesno: yesnoRef.current.value,
+            title: title,
+            content: content,
         };
+
         handleAdd(post);
-        navigate('/post');
+        navigate('/board');
     }
 
 
@@ -70,18 +73,18 @@ export default function Writing(){
     return (
         <div>
             <Navigation/>
-            <form method="post"onSubmit={handleSubmit} style={BoxStyle}>
+            <form method="post" onSubmit={handleSubmit} style={BoxStyle}>
                 <div>
                     <label htmlFor="contents">제목</label>
-                    <input ref={contentRef} type="text" name="contents" id='contents' required style={Titleboxstyle}/>
+                    <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="contents" id='contents' required style={Titleboxstyle}/>
                 </div>
                 <div>.</div>
                 <div>
-                <textarea ref={yesnoRef} type="text" name="yesno" id='yesno' required className="Textboxstyle"  style={Textboxstyle}
+                <textarea value={content} onChange={(e) => setContent(e.target.value)}  type="text" name="yesno" id='yesno' required className="Textboxstyle"  style={Textboxstyle}
                         placeholder="본문을 입력하세요."/>
                 </div>
                 <Link to='/board'> <button style={buttonStyle}>돌아가기</button> </Link>
-                <Link to='/board'> <input type="submit" value="게시하기" style={buttonStyle}/></Link>
+                <input type="submit" value="게시하기" style={buttonStyle}/>
             </form>
         </div>
         

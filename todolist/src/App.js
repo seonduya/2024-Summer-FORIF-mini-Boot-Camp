@@ -38,8 +38,8 @@ function App() {
               <Route exact path="/" element={<Introduce themeMode={themeMode}/>}/>
               <Route exact path="/todo" element={<TodoPage/>}/>
 
-              <Route exact path="/board" element={<Board/>}/>
-              <Route exact path='/mypost' element={<MyPost/>}/>
+              <Route exact path="/board" element={<Board/>} />
+                <Route exact path='/mypost' element={<MyPost/>}/>
               <Route exact path='/writing' element={<Writing/>}/>
               
               <Route exact path="/login" element={<Login/>}/>
