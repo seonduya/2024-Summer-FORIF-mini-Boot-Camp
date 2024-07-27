@@ -20,6 +20,7 @@ import TodoPage from './pages/TodoPage';
 import Board from './pages/Board';
 import MyPost from './pages/MyPost';
 import Writing from './pages/writing';
+import PostUpdate from './pages/update';
 
 
 function App() {
@@ -35,14 +36,15 @@ function App() {
           <Globalstyle/>
           <Suspense fallback={<div>...loading</div>}>
             <Routes>
-              <Route exact path="/" element={<Introduce themeMode={themeMode}/>}/>
-              <Route exact path="/todo" element={<TodoPage/>}/>
+              <Route path="/" element={<Introduce themeMode={themeMode}/>}/>
+              <Route path="/todo" element={<TodoPage/>}/>
 
-              <Route exact path="/board" element={<Board/>} />
-                <Route exact path='/mypost' element={<MyPost/>}/>
-              <Route exact path='/writing' element={<Writing/>}/>
+              <Route path="/board" element={<Board/>} />
+              <Route path='/writing' element={<Writing/>}/>
+              <Route path='/board/:postId' element={<MyPost/>}/>
+              <Route path='/board/:postId/update' element={<PostUpdate/>}/>
               
-              <Route exact path="/login" element={<Login/>}/>
+              <Route path="/login" element={<Login/>}/>
             </Routes>
           </Suspense>
      </Router>

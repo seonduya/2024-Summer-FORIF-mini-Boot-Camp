@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../components/navbutton";
-import PostItems from "../components/postitems";
+import PostItem from "../components/postitem";
 
 const Board = () => {
 
@@ -26,7 +26,7 @@ const Board = () => {
                     <img />
                  </div>
                  <div className="whitebox" style={{backgroundColor:'#FFFFFF'}}>
-                    <PostItems/>
+                    <PostItem/>
                     <Link to='/writing'> <button style={buttonStyle}> 글 작성하기</button> </Link>
             </div>
         </div>
@@ -35,8 +35,3 @@ const Board = () => {
 };
 
 export default Board;
-
-        //왼쪽 오른쪽
-        //오른쪽은 반복으로 나타내야 함.
-        //포스트 컴포넌트 : PostItem -> map으로
-        //포스트 리스트 : PostList

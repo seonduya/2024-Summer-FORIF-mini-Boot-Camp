@@ -2,11 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const PostsContext = createContext({
     datalist: [
-            {
-                id: '1',
-                contents: 'abc',
-                yesno: 'yes',
-            },  
+            {},  
     ],
     handleAdd: () => { },
     handleEdit: () => { },
@@ -17,11 +13,7 @@ export default function PostsContextProvider({ children }) {
     const [datalist, setDatalist] = useState(() => {
         const savedPosts = localStorage.getItem('datalist');
         return savedPosts ? JSON.parse(savedPosts) : [
-            {
-                id: '1',
-                contents: 'abc',
-                yesno: 'yes',
-            },  
+            {},  
         ];
     });
 
@@ -31,24 +23,30 @@ export default function PostsContextProvider({ children }) {
     }, [datalist]);
 
     function handleAdd(post) {
-        //const newId = datalist.length + 1;
+        // const newId = Math.random().toString()
+        // setDatalist((prevPosts) => [
+        //     { ...post, id: newId },//id랜덤부여
+        //     //{ ...todo, id: newId.toString(), status: 'no' }, 1,2,3 id 부여. 중복현상발생
+        //     ...prevPosts,
+        // ]);
+        // console.log('post added:', post);
+        const newId = datalist.length > 0 ? Math.floor(Math.max(...datalist.map(item => Number(item.id)))) + 1 : 1;
         setDatalist((prevPosts) => [
-            { ...post, id: Math.random().toString(), status: 'no' },//id랜덤부여
-            //{ ...todo, id: newId.toString(), status: 'no' }, 1,2,3 id 부여. 중복현상발생
+            { ...post, id: newId.toString()}, // 새로운 ID 할당
             ...prevPosts,
         ]);
         console.log('post added:', post);
     }
 
-    function handleEdit(id) {
-        const updatedList = datalist.map(item =>
-            item.id === id ? { ...item, yesno: item.yesno === 'yes' ? 'no' : 'yes' } : item
+    function handleEdit(postId,updatedPost) {
+        const updatedList = datalist.map(post =>
+            post.id === postId ? { ...post, ...updatedPost } : post
         );
         setDatalist(updatedList);
     };
 
-    function handleDelete(id) {
-        const updatedList = datalist.filter(item => item.id !== id);
+    function handleDelete(postId) {
+        const updatedList = datalist.filter(post => post.id !== postId);
         setDatalist(updatedList);
     };
 

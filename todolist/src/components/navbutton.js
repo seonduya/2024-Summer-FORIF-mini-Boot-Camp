@@ -10,11 +10,11 @@ function Navigation({mode}) {
 
         fontSize: '22px',
         fontWeight: '700',
-        borderRadius: '50px',
 
-        backgroundColor: 'rgba(255,255,255,0.7)',
-        border: '#FFFFFF',
+        backgroundColor: 'rgba(255,255,255,0.2)',
+        border: 'none',
         color: '#436996',
+        textDecoration:'none',
     }
     const buttonStyledark ={
         width: '150px',
@@ -22,11 +22,11 @@ function Navigation({mode}) {
         
         fontSize: '22px',
         fontWeight: '700',
-        borderRadius: '50px',
         
-        backgroundColor: 'rgb(255,255,255)',
-        border: '#FFFFFF',
+        backgroundColor: 'rgb(255,255,255,0)',
+        border: 'none',
         color: '#323232',
+        textDecoration:'none',
     }
 
     

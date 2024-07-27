@@ -8,8 +8,6 @@ import ppumi from '../assets/img/ppumi.png';
 
 import TodoList from '../components/todolist';
 import TodoInsert from '../components/textfield';
-import FeatureButton from '../components/feature';
-
 
 import Navigation from '../components/navbutton';
 
@@ -20,11 +18,6 @@ const TodoPage = ()=>{
   {
       id: 1,
       text: '리액트 기초 알아보기',
-      checked: true,
-  },  
-  {
-      id: 2,
-      text: 'ㅎ...진짜 디지겠네..^^;;',
       checked: true,
   },  
   {
@@ -82,7 +75,6 @@ setTodos(
      
         </div>
         </div>
-        <FeatureButton/>
         <TodoInsert onInsert={onInsert} style={{alignItems:'center'}}/>
     </div>
         <div className='whitebox' >

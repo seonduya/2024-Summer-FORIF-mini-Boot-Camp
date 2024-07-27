@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import Navigation from "../components/navbutton";
 
-import { useContext, useRef } from "react";
+import { useContext} from "react";
 import {PostsContext} from "../store/postContext";
 
 
@@ -13,14 +13,17 @@ export default function Writing(){
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const contentRef= useRef();
+    const [date, setDate]= useState("");
+    //const contentRef= useRef();
     // const yesnoRef= useRef();
 
     function handleSubmit(event){
         event.preventDefault();
+        const currentDate = new Date().toISOString().split('T')[0];
         const post = {
             title: title,
             content: content,
+            date: currentDate,
         };
 
         handleAdd(post);
