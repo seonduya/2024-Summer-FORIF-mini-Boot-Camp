@@ -1,9 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 export const PostsContext = createContext({
-    datalist: [
-            {},  
-    ],
+    datalist: [],
     handleAdd: () => { },
     handleEdit: () => { },
     handleDelete: () => { },

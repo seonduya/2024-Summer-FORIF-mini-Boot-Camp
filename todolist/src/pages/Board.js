@@ -20,7 +20,6 @@ const Board = () => {
 
     return(
         <div>
-            <Navigation/>
             <div style={{display:"flex", gap:'10px'}}>
                 <div style={{width:'300px', backgroundColor:'#000000'}}>
                     <img />

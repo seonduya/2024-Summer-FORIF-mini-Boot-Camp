@@ -75,7 +75,7 @@ export default function Writing(){
 
     return (
         <div>
-            <Navigation/>
+            
             <form method="post" onSubmit={handleSubmit} style={BoxStyle}>
                 <div>
                     <label htmlFor="contents">제목</label>

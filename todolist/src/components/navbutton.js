@@ -31,9 +31,9 @@ function Navigation({mode}) {
 
     
     return (
-        <div>
+        <div style={{width:'1000px', alignItems:'center'}}>
             <button style={mode ==='light' ? buttonStyle : buttonStyledark}>
-            <Link to='/'> 홈 </Link>
+            <Link to='/calendar'> 홈 </Link>
             </button>
             <button style={mode ==='light' ? buttonStyle : buttonStyledark}>
             <Link to='/todo'> 투두페이지 </Link>
@@ -42,7 +42,7 @@ function Navigation({mode}) {
             <Link to='/board'> 게시판 </Link>
             </button>
             <button style={mode ==='light' ? buttonStyle : buttonStyledark}>
-            <Link to='/login'> 로그인 </Link>
+            <Link to='/'> 로그인 </Link>
             </button>
 
         </div>

@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect} from "react";
 import { Link,useParams, useNavigate } from "react-router-dom";
-import Navigation from "../components/navbutton";
 import '../App.css';
 
 import {PostsContext} from "../store/postContext";
@@ -10,7 +9,7 @@ function MyPost(){
     const { datalist } = useContext(PostsContext);
     const {postId} = useParams();
     const navigate = useNavigate();
-    
+
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -51,7 +50,6 @@ function MyPost(){
 
     return (
         <div >
-            <Navigation/>
             <div  style={BoxStyle}>
             <div style={TextLayout}>
                 <p style={titleStyle}>{post.title}</p>

@@ -3,6 +3,7 @@ import logo from '../assets/img/logo.png';
 import logodark from '../assets/img/logodark.png';
 import { useTheme } from '../context/themeProvider';
 import styled from "styled-components";
+import Navigation from "./navbutton";
 
 
 function Header(){
@@ -13,18 +14,28 @@ function Header(){
     
     const headerstyle={
         width:'100px',
-        height:'172px',
+        alignItems:"center",
     };
 
     console.log(themeMode);
 
     return(
-        <HeaderContainer style={headerstyle} >
-            <ImageContainer>
-           {themeMode === 'dark' ? <StyledImage src={logodark} alt="로고다크"/> : <StyledImage src={logo} alt="로고"/>} 
-           </ImageContainer>
-           
-        </HeaderContainer>
+        <div>
+        <div style={{display:"flex", alignItems:"center"}}>
+            <HeaderContainer style={headerstyle} > 
+                <ImageContainer>
+                {themeMode === 'dark' ? <StyledImage src={logodark} alt="로고다크"/> : <StyledImage src={logo} alt="로고"/>} 
+                </ImageContainer>
+            </HeaderContainer>
+            <Navigation/> 
+        </div>
+            <div style={{
+                width: '150px',
+                height: '60px',}}>
+            </div>
+
+        </div>
+
     );
 };
 

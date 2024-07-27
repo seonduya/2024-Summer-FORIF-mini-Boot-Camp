@@ -9,7 +9,6 @@ import ppumi from '../assets/img/ppumi.png';
 import TodoList from '../components/todolist';
 import TodoInsert from '../components/textfield';
 
-import Navigation from '../components/navbutton';
 
 
 //{todo, onRemove, onToggle}
@@ -63,7 +62,6 @@ setTodos(
 
     return(
         <div>
-          <Navigation/>
 
             <div  style={{height:'800px'}}>
             <div className='center' style={{height:'500px'}}> 

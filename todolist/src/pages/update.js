@@ -78,7 +78,7 @@ export default function PostUpdate() {
 
     return (
         <div>
-            <Navigation/>
+            
             <form onSubmit={handleEditPost} style={BoxStyle}>
                 <div>
                         <label htmlFor="title">제목</label>

@@ -2,6 +2,7 @@ import './App.css';
 import React, { useCallback, useState, useRef, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+
 import Header from './components/header';
 import Navigation from './components/navbutton';
 
@@ -16,7 +17,6 @@ import { Globalstyle } from './theme/GlobalStyle';
 import Introduce from './pages/Introduce';
 import Login from './pages/Login';
 import TodoPage from './pages/TodoPage';
-
 import Board from './pages/Board';
 import MyPost from './pages/MyPost';
 import Writing from './pages/writing';
@@ -31,12 +31,13 @@ function App() {
   return (
     <div className="App">
   <Main/>
-     <Header themeMode={toggleTheme}/> 
      <Router>
+     <Header themeMode={toggleTheme}/> 
           <Globalstyle/>
           <Suspense fallback={<div>...loading</div>}>
             <Routes>
-              <Route path="/" element={<Introduce themeMode={themeMode}/>}/>
+              <Route path="/" element={<Login/>}/>
+              <Route path="/calendar" element={<Introduce themeMode={themeMode}/>}/>
               <Route path="/todo" element={<TodoPage/>}/>
 
               <Route path="/board" element={<Board/>} />
@@ -44,7 +45,6 @@ function App() {
               <Route path='/board/:postId' element={<MyPost/>}/>
               <Route path='/board/:postId/update' element={<PostUpdate/>}/>
               
-              <Route path="/login" element={<Login/>}/>
             </Routes>
           </Suspense>
      </Router>
@@ -58,10 +58,11 @@ function App() {
     <div style={{padding:'25px', fontSize:'25px',fontFamily:'ShinDongYup Handwriting',fontWeight:1000}}>
     Created by seonduya 
     </div>
-
+    
 </div>
     
   );
+  
 }
 
 export default function AppWrapper(){
@@ -71,5 +72,6 @@ export default function AppWrapper(){
         <App />
       </PostsContextProvider>
     </ThemeProvider>
+    
   )
 };
