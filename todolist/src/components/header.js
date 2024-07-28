@@ -29,10 +29,7 @@ function Header(){
             </HeaderContainer>
             <Navigation/> 
         </div>
-            <div style={{
-                width: '150px',
-                height: '60px',}}>
-            </div>
+
 
         </div>
 
