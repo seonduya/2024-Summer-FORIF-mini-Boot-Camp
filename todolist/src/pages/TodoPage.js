@@ -2,7 +2,7 @@
 import '../App.css';
 import React, { useCallback, useState, useRef, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import MainLayout from '../components/mainlayout';
 
 import ppumi from '../assets/img/ppumi.png';
 
@@ -42,39 +42,33 @@ const onInsert = useCallback(
 
 
 const onRemove = useCallback(
-(id) => {
-setTodos(todos.filter((todo)=> todo.id !== id));
-},
-[todos],
+    (id) => {
+    setTodos(todos.filter((todo)=> todo.id !== id));
+    },
+    [todos],
 );
 
 
 const onToggle = useCallback(
-(id)=> {
-setTodos(
-  todos.map((todo) => 
-    todo.id === id ? {...todo, checked: !todo.checked} : todo,
-),
-);
-},
-[todos],
+    (id)=> {
+      setTodos(
+          todos.map((todo) => 
+            todo.id === id ? {...todo, checked: !todo.checked} : todo,
+        ),
+      );
+      },
+    [todos],
 );
 
     return(
-        <div>
+        <MainLayout>
+        <div  style={{height:'700px', display:'flex', flexDirection:'column', alignItems:'center'}}>
+              <div style={{height:'500px'}}>            
+                <img src={ppumi} className='icon'/>
+              </div>
+              <TodoInsert onInsert={onInsert} style={{alignItems:'center'}}/> 
+        </div>
 
-            <div  style={{height:'800px'}}>
-            <div className='center' style={{height:'500px'}}> 
-            <div className='center'>
-            
-            <div style={{height:'500px'}}>            
-            <img src={ppumi} className='icon'/>
-     </div>
-     
-        </div>
-        </div>
-        <TodoInsert onInsert={onInsert} style={{alignItems:'center'}}/>
-    </div>
         <div className='whitebox' >
             <p style={{color:'black',fontSize : '50px',fontFamily:'Recipekorea'}}>To-Do List</p>
             <div>
@@ -84,8 +78,8 @@ setTodos(
                 onToggle={onToggle} />
             </div>
         </div>
-
-        </div>
+        
+        </MainLayout>
     );
 };
 

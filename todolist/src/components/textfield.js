@@ -4,10 +4,11 @@ import '../App.css';
 
 function TodoInsert({onInsert}) {
     const fieldstyle = {
-        width: '617px',
+        width:'80%',
+        height: '80px', 
         borderRadius:'50px',
-        padding:'35px',
-        margin:'15px',
+        padding:'0px 35px ',
+        
         
         backgroundColor:'#F1F1F1',
         border:'#FFF',
@@ -20,7 +21,7 @@ function TodoInsert({onInsert}) {
     const buttonStyle = {
         width:'178px',
         height: '80px',        
-        borderRadius:'10px',
+        borderRadius:'30px',
 
         color: 'white',
         backgroundColor:'#3893FF',
@@ -37,8 +38,8 @@ function TodoInsert({onInsert}) {
                 [onInsert,value])
 
     return (
-        <form className="TodoInsert" onSubmit={onSubmit}>
-            <div>
+        <form className="TodoInsert" onSubmit={onSubmit} style={{width:'100%'}}>
+            <div style={{display:'flex', alignItems:'center', width:'100%', gap:'10px'}}>
                 <input 
                     onChange={onChange}
                     value={value}
