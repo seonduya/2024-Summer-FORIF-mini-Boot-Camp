@@ -1,30 +1,19 @@
 
 import '../App.css';
-import React, { useCallback, useState, useRef, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useCallback, useState, useRef, useContext} from 'react';
 import MainLayout from '../components/mainlayout';
+
 
 import ppumi from '../assets/img/ppumi.png';
 
 import TodoList from '../components/todolist';
 import TodoInsert from '../components/textfield';
+import {TodosContext} from '../store/todoContext';
 
 
-
-//{todo, onRemove, onToggle}
 const TodoPage = ()=>{
-  const [todos, setTodos] = useState([
-  {
-      id: 1,
-      text: '리액트 기초 알아보기',
-      checked: true,
-  },  
-  {
-      id: 3,
-      text: '잘하고 있...어요',
-      checked: false,
-      },  
-]);
+  const [todos, setTodos] = useState('');
+  const TodoContext = useContext(TodosContext);
 
 const nextID = useRef(4);
 const onInsert = useCallback(
@@ -40,25 +29,20 @@ const onInsert = useCallback(
   [todos],
 );
 
+const whitebox= {
+  width: '80%',
+  display:'flex',
+  flexDirection:'column',
+  gap:'30px',
 
-const onRemove = useCallback(
-    (id) => {
-    setTodos(todos.filter((todo)=> todo.id !== id));
-    },
-    [todos],
-);
-
-
-const onToggle = useCallback(
-    (id)=> {
-      setTodos(
-          todos.map((todo) => 
-            todo.id === id ? {...todo, checked: !todo.checked} : todo,
-        ),
-      );
-      },
-    [todos],
-);
+  backgroundColor: 'rgba(255, 255, 255, 0.70)',
+  borderRadius: '32px',
+  border: '2px solid #FFF',
+  
+  padding: '50px 20px',
+  margin: '0px auto', /*수평 - 중간 배열*/
+  flexShrink: 0,
+}
 
     return(
         <MainLayout>
@@ -66,16 +50,13 @@ const onToggle = useCallback(
               <div style={{height:'500px'}}>            
                 <img src={ppumi} className='icon'/>
               </div>
-              <TodoInsert onInsert={onInsert} style={{alignItems:'center'}}/> 
+              <TodoInsert onInsert={onInsert}/> 
         </div>
 
-        <div className='whitebox' >
+        <div style={whitebox} >
             <p style={{color:'black',fontSize : '50px',fontFamily:'Recipekorea'}}>To-Do List</p>
             <div>
-            <TodoList
-                todos={todos}
-                onRemove={onRemove}
-                onToggle={onToggle} />
+            <TodoList/>
             </div>
         </div>
         

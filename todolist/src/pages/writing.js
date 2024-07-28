@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MainLayout from "../components/mainlayout";
 
-import { useContext} from "react";
+import {useContext} from "react";
 import {PostsContext} from "../store/postContext";
 
 

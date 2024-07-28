@@ -28,7 +28,7 @@ const Board = () => {
     const ContainerStyle = {
         width: '65%',
         height:'608px',
-        padding: '10px',
+        padding: '30px',
         borderRadius: '30px',
 
         display: 'flex',

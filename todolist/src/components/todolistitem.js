@@ -1,71 +1,88 @@
-import React from "react";
+import React,{useContext, useCallback} from "react";
+
+import Delete from '../assets/img/delete.svg'
 import Checked from '../assets/img/check.svg'
 import Unchecked from '../assets/img/uncheck.svg'
-import Delete from '../assets/img/delete.svg'
+
+import { TodosContext } from "../store/todoContext";
 
 
-function TodoItem({todo, onRemove, onToggle}) {
-    const {id, text, checked} = todo;
+function TodoItem({item}) {
+    
+    const {handleDelete, handleEdit}= useContext(TodosContext)
+    const {id, value, checked, date} = item;
+
+    const onEditClick = useCallback(() => {
+        handleEdit(id);
+      }, [id, handleEdit]);
+    
+      const onDeleteClick = useCallback(() => {
+        handleDelete(id);
+      }, [id, handleDelete]);
     
 
-    const itembox ={
+    const itemStyles = {
+        base: {
+          width:'80%',
+          height: '100px',
+          
+          display: 'flex',
+          alignItems: 'center',
+          gap:'15px',
+          padding: '24px 40px ',
+          
+          borderRadius: '16px',
+          boxShadow: '0px 8px 8px 0px rgba(67, 105, 150, 0.10)',
+          
+        },
+        unchecked: {
+          color: '#323232',
+          backgroundColor: '#FFFFFF',
+        },
+        checked: {
+          color: '#BCBCBC',
+          backgroundColor: '#F7F7F7',
+          textDecoration: 'line-through',
+        },
+      };
+
+      const TextBox ={
+        flex:1,
         display:'flex',
-        alignItems:'cneter',
-        width: '739px',
-        height: '122px',
-        color: '#323232',
-        backgroundColor:'#FFFFFF',
-        border:'#000000',
-        borderRadius:'16px',
-        padding:'15px',
-        margin:'20px -2px',
-        boxShadow: '0px 8px 8px 0px rgba(67, 105, 150, 0.10)',
-        
+        flexDirection:'column',
+        textAlign:'left',
+         gap:'10px'
     }
 
-    const itemboxchecked ={
-        display:'flex',
-        alignItems:'cneter',
-        width: '739px',
-        height: '122px',
-
-        color:'#BCBCBC',
-        backgroundColor:'#F7F7F7',
-        border:'#000000',
-
-        borderRadius:'16px',
-        padding:'15px',
-        margin:'20px 2px',
-        boxShadow: '0px 8px 8px 0px rgba(67, 105, 150, 0.10)',
-
-        textDecoration: 'line-through',   
-    }
+    const iconStyles = {
+        check: { width: '45px', height: '45px', cursor: 'pointer' },
+        delete: { width: '35px', height: '35px', cursor: 'pointer'},
+      };
+    
 
     return(
-        <div className={{checkbox:true}} >
-            {checked ? 
-            <div className="TodoItem" style={itembox}>
-                <div className='center' style={{gap:'35px'}}>
-                    <img src={Unchecked} style={{width: '50px', height: '50px'}} onClick={()=> onToggle(id)}/>
-                    <div style={{width:'528px', textAlign:'left'}}>
-                        <p style={{fontSize:'30px',fontWeight: 700}}>{text}</p>
-                        <p style={{fontSize:'23px', color:'#BCBCBC'}}>2024.02.16</p>
+        <div className="TodoItem" 
+            style={{
+                ...itemStyles.base,
+                ...(checked ==='true'? itemStyles.checked : itemStyles.unchecked),
+            }}>
+            <img
+                src={checked ==='true' ? Checked: Unchecked}
+                style={iconStyles.check}
+                onClick={onEditClick}
+                alt={checked ==='true' ? '완료':'미완료'}
+            />
+                    <div style={TextBox}>
+                        <p style={{fontSize:'30px',fontWeight: 700}}>{value}</p>
+                        <p style={{fontSize:'23px', color:'#BCBCBC'}}>{date}</p>
                     </div>
-                    <img src={Delete} style={{width: '35px', height: '35px'}} onClick={()=> onRemove(id)}/>
-                </div>
-                </div>
-                :
-                <div className="TodoItem" style={itemboxchecked}>
-                <div className='center' style={{gap:'35px'}}>
-                    <img src={Checked} style={{width: '50px', height: '50px'}} onClick={()=> onToggle(id)}/>
-                    <div style={{width:'528px', textAlign:'left'}}>
-                        <p style={{fontSize:'30px',fontWeight: 700}}>{text}</p>
-                        <p style={{fontSize:'23px', color:'#BCBCBC'}}>2024.02.16</p>
-                    </div>
-                    <img src={Delete} style={{width: '35px', height: '35px'}} onClick={()=> onRemove(id)}/>
-                </div>
-                </div>
-                }
+            <img
+                src={Delete}
+                style={iconStyles.delete}
+                onClick={onDeleteClick}
+                alt={'삭제'}
+            />   
+                
         </div>
         
     );

@@ -1,7 +1,6 @@
 import React,{useState, useContext, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PostsContext } from "../store/postContext";
-import MainLayout from "./mainlayout";
 
 function PostItem({item}){
 
@@ -16,7 +15,7 @@ function PostItem({item}){
 
     const postItemStyle = {
         
-        width:'80%',
+        width:'100%',
         padding:'20px',
         margin:'8px',
         borderRadius:'14px',
@@ -38,7 +37,7 @@ function PostItem({item}){
         <div>
                 <div key={item.id} style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <div onClick={()=> navigate(`/board/${item.id}`)} style={postItemStyle}>
-                        <div  style={{display:'flex', flexDirection:'column',gap:'8px', textAlign:'left', width:'500px'}}>
+                        <div  style={{display:'flex', flexDirection:'column',gap:'8px', textAlign:'left', width:'100%'}}>
                             <h2 style={titleStyle}>{item.title}</h2>
                             <p>{item.date}</p>
                         </div>

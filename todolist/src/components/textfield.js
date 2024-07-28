@@ -1,8 +1,28 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import '../App.css';
-//import { Context } from "../store/todoContext";
+import { TodosContext } from "../store/todoContext";
 
-function TodoInsert({onInsert}) {
+export default function TodoInsert() {
+    const {handleAdd} = useContext(TodosContext);
+    const [value, setValue]= useState("");
+    const [date, setDate] =useState("");
+
+    const onChange = useCallback( e=>
+        {setValue(e.target.value);},[])
+
+
+    function handleSubmit(event){
+        event.preventDefault();
+        const currentDate = new Date().toISOString().split('T')[0];
+        const todo = {
+            value: value,
+            date: currentDate,
+        };
+
+        handleAdd(todo);
+        setValue('');
+    }
+
     const fieldstyle = {
         width:'80%',
         height: '80px', 
@@ -29,20 +49,17 @@ function TodoInsert({onInsert}) {
 
         fontSize: '26px',
         fontWeight: 700,
+        cursor:'pointer',
     };
-    const [value, setValue]= useState('');
-    const onChange = useCallback( e=>
-        {setValue(e.target.value);},[])
-    const onSubmit = useCallback
-            (e=> {onInsert(value);setValue('');e.preventDefault(); },
-                [onInsert,value])
 
     return (
-        <form className="TodoInsert" onSubmit={onSubmit} style={{width:'100%'}}>
+        <form onSubmit={handleSubmit} style={{width:'80%'}}>
             <div style={{display:'flex', alignItems:'center', width:'100%', gap:'10px'}}>
                 <input 
-                    onChange={onChange}
                     value={value}
+                    onChange={(e) =>setValue(e.target.value)}
+                    type="text" name="contents" id='contents' 
+                    required
                     style={fieldstyle} placeholder="해야할 일을 적어주세요.">
                 </input>
                 <button type="submit" style={buttonStyle}>Enter</button>
@@ -52,4 +69,3 @@ function TodoInsert({onInsert}) {
     );
 };
 
-export default TodoInsert;

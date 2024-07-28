@@ -9,6 +9,7 @@ import Layout from './components/AppLayout'
 
 import { ThemeProvider, useTheme } from './context/themeProvider';
 import PostsContextProvider, { PostsContext } from './store/postContext';
+import TodosContextProvider from './store/todoContext';
 import { Globalstyle } from './theme/GlobalStyle';
 
 import Introduce from './pages/Introduce';
@@ -68,9 +69,11 @@ export default function AppWrapper(){
   return(
     <ThemeProvider>
       <PostsContextProvider>
-      <Router>
-          <App />
+        <TodosContextProvider>
+          <Router>
+              <App />
           </Router>
+          </TodosContextProvider>
         </PostsContextProvider>
       </ThemeProvider>
     )
