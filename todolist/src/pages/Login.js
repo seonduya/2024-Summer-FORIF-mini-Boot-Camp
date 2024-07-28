@@ -114,7 +114,7 @@ const Auth = () => {
                         style={buttonStyle} />
                     <span style={{cursor:'pointer'}}
                         onClick={toggleAccount}>{newAccount? "로그인":"계정이 없나요? 회원가입"} 하러가기</span>
-                
+                    <button onClick={()=> navigate(`/create`)}>회원가입</button>
                 
             </form>
         </div> 

@@ -14,10 +14,9 @@ function PostItem({item}){
     }
 
     const postItemStyle = {
-        
+        height:'36px',
         width:'100%',
         padding:'20px',
-        margin:'8px',
         borderRadius:'14px',
         gap:'10px',
 

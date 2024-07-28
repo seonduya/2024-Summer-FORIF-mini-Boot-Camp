@@ -28,13 +28,12 @@ const Board = () => {
     const ContainerStyle = {
         width: '65%',
         height:'608px',
-        padding: '30px',
+        padding: '0px 50px',
         borderRadius: '30px',
 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent:'center', 
         textAlign:'left',
 
         backgroundColor: '#FFFFFF',
@@ -57,20 +56,22 @@ const Board = () => {
     return(
         <MainLayout>
             <div style={{display:"flex", gap:'10px'}}>
-                <div style={{width:'30%'}}>
-                    <img src={animal}/>
-                 </div>
+                <ImageContainer>
+                    <StyledImage src={animal}/>
+                </ImageContainer>
 
                  <div style={ContainerStyle}>
-                    <div style={{textAlign:'left', padding:'0px 60px ', fontSize:'30px',fontWeight:'800'}}>
-                        게시판
+                    <div style={{display:'flex', width:'100%',textAlign:'left', padding:'30px 0px',fontSize:'30px',fontWeight:'800'}}>
+                        <div style={{width:'70%'}}>게시판</div>
+                        <Link to='/writing'> <button style={buttonStyle}> 글 작성하기</button> </Link>
                     </div>
-                    <div>
+                    
+                    <div style={{width:'100%', height:'430px', display:'flex', flexDirection:'column', gap:'8px'}}>
                     {currentItems.map((item) => (
                         <PostItem key={item.id} item={item} />
                     ))}
                     </div>
-                    <Link to='/writing'> <button style={buttonStyle}> 글 작성하기</button> </Link>
+                    
                     <PaginationWrapper>
                     <Pagination
                         activePage={page}
@@ -111,4 +112,19 @@ const PaginationWrapper = styled.div`
         font-weight: 700;
         cursor: pointer;
     }
+`;
+
+const ImageContainer = styled.div`
+    width: 30%;
+    height: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+`;
+
+const StyledImage = styled.img`
+    height: auto;
 `;

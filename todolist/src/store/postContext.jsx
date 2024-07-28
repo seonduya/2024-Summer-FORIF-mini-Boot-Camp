@@ -62,10 +62,3 @@ export default function PostsContextProvider({ children }) {
     );
 }
 
-
-
-// const [datalist, setDatalist] = useState([
-//     { id: 1, contents: 'Do the dishes', yesno: 'no' },
-//     { id: 2, contents: 'Take out the trash', yesno: 'yes' },
-//     { id: 3, contents: 'Mow the lawn', yesno: 'no' },
-// ]);

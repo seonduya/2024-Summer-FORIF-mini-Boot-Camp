@@ -19,6 +19,7 @@ import Board from './pages/Board';
 import MyPost from './pages/MyPost';
 import Writing from './pages/writing';
 import PostUpdate from './pages/update';
+import Account from './pages/Account';
 
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
               <Route path='/writing' element={<Writing/>}/>
               <Route path='/board/:postId' element={<MyPost/>}/>
               <Route path='/board/:postId/update' element={<PostUpdate/>}/>
+
+              <Route path='/create' element={<Account/>}/>
               
             </Routes>
           </Suspense>
