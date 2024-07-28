@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import { PostsContext } from "../store/postContext";
-import Navigation from "../components/navbutton";
+import MainLayout from "../components/mainlayout";
 
 export default function PostUpdate() {
     const { datalist, handleEdit } = useContext(PostsContext);
@@ -52,13 +52,16 @@ export default function PostUpdate() {
         
     };
 
-
     const BoxStyle = {
         width : '800px',
         height : '600px',
-        minHeight: '600px',
         padding: '70px',
         borderRadius:'35px',
+
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        gap:'20px',
         
         backgroundColor:'#FFFFFF',
     }
@@ -77,7 +80,7 @@ export default function PostUpdate() {
 
 
     return (
-        <div>
+        <MainLayout style={{display:'flex', flexDirection:'column', alignItems:'center'}} >
             
             <form onSubmit={handleEditPost} style={BoxStyle}>
                 <div>
@@ -103,11 +106,12 @@ export default function PostUpdate() {
                             required className="Textboxstyle" 
                             style={Textboxstyle}/>
                 </div>
+                <div style={{display:'flex', gap:'15px'}}>
                 <button onClick={()=> navigate('/board')} style={buttonStyle}> 돌아가기 </button> 
                 <button type="submit" style={buttonStyle}> 수정 완료 </button>   
+                </div>
             </form>
-       
-        </div>
+            </MainLayout>
     );
 }
 

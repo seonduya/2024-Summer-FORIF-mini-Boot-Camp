@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
-import Navigation from "../components/navbutton";
+import { useNavigate } from "react-router-dom";
+import MainLayout from "../components/mainlayout";
 
 import { useContext} from "react";
 import {PostsContext} from "../store/postContext";
@@ -57,6 +57,11 @@ export default function Writing(){
         height : '600px',
         padding: '70px',
         borderRadius:'35px',
+
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        gap:'20px',
         
         backgroundColor:'#FFFFFF',
     }
@@ -74,26 +79,25 @@ export default function Writing(){
     }
 
     return (
-        <div>
-            
+        <MainLayout >
             <form method="post" onSubmit={handleSubmit} style={BoxStyle}>
-                <div>
-                    <label htmlFor="contents">제목</label>
+                <div style={{width:'1000px'}}>
+                    <label htmlFor="contents" style={{margin:'50px'}}>제목</label>
                     <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="contents" id='contents' required style={Titleboxstyle}/>
                 </div>
-                <div>.</div>
                 <div>
                 <textarea value={content} onChange={(e) => setContent(e.target.value)}  type="text" name="yesno" id='yesno' required className="Textboxstyle"  style={Textboxstyle}
                         placeholder="본문을 입력하세요."/>
                 </div>
-                <Link to='/board'> <button style={buttonStyle}>돌아가기</button> </Link>
-                <input type="submit" value="게시하기" style={buttonStyle}/>
+                <div style={{display:'flex', gap:'15px'}}>
+                    <button onClick={()=>navigate(`/board`)} style={buttonStyle}>돌아가기</button>
+                    <input type="submit" value="게시하기" style={buttonStyle}/>
+                </div>
             </form>
-        </div>
+        </MainLayout>
         
     );
 };
-
 
 
 //post ->우측엔 postitems -> 그 하위엔 postitem
