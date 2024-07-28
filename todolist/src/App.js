@@ -1,13 +1,10 @@
 import './App.css';
 import React, { useCallback, useState, useRef, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 
 import Header from './components/header';
-import Navigation from './components/navbutton';
-
-import Main from './components/Main';
-import Sub from './components/Sub';
+import Layout from './components/AppLayout'
 
 
 import { ThemeProvider, useTheme } from './context/themeProvider';
@@ -27,12 +24,13 @@ function App() {
   const {themeMode, toggleTheme}  = useTheme();
   console.log(themeMode);  
 
+  const location = useLocation();
+
   
   return (
     <div className="App">
-  <Main/>
-     <Router>
-     <Header themeMode={toggleTheme}/> 
+     <Layout/>
+     {location.pathname !== "/" && <Header />}
           <Globalstyle/>
           <Suspense fallback={<div>...loading</div>}>
             <Routes>
@@ -47,17 +45,18 @@ function App() {
               
             </Routes>
           </Suspense>
-     </Router>
+     
     
 
       {/* <InterationSample/> */}
-    
-    <div style={{height:'150px'}}>
+      <div>
+          <div style={{height:'100px'}}>
 
-    </div>
-    <div style={{padding:'25px', fontSize:'25px',fontFamily:'ShinDongYup Handwriting',fontWeight:1000}}>
-    Created by seonduya 
-    </div>
+          </div>
+          <div style={{padding:'25px', fontSize:'25px',fontFamily:'ShinDongYup Handwriting',fontWeight:1000}}>
+          Created by seonduya 
+          </div>
+      </div>
     
 </div>
     
@@ -69,9 +68,10 @@ export default function AppWrapper(){
   return(
     <ThemeProvider>
       <PostsContextProvider>
-        <App />
-      </PostsContextProvider>
-    </ThemeProvider>
-    
-  )
+      <Router>
+          <App />
+          </Router>
+        </PostsContextProvider>
+      </ThemeProvider>
+    )
 };
