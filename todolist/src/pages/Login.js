@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navigation from "../components/navbutton";
 
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 import { authService } from "../firebase/fbInstance";
@@ -37,7 +36,8 @@ const Auth = () => {
              else 
              {
                 data = await signInWithEmailAndPassword(authService, email, password);
-                navigate(`/`);
+                    login();
+                navigate(`/calendar`);
             }
         } catch (error){
             setError(error.message);
@@ -48,17 +48,12 @@ const Auth = () => {
         alert(`${email}로 회원가입합니다.`)
     }
 
-    const BoxStyle ={
-        width:'50%',
-        padding: '30px',
-        alignItems:'center',
-        borderRadius:'30px',
-        backgroundColor:'#FFFFFF',
-        
+    const login = () =>{
+        alert(`로그인합니다.`)
     }
 
     const fieldStyle = {
-        width :'400px',
+        width :'70%',
         height : '40px',
         borderRadius:'10px',
         padding:'8px',
@@ -71,7 +66,7 @@ const Auth = () => {
 
 
     const buttonStyle = {
-        width :'400px',
+        width :'75%',
         height : '50px',
         borderRadius:'10px',
 
@@ -79,20 +74,24 @@ const Auth = () => {
         border:'none',
 
         color:'white',
-        fontSize:'20px',
-        fontWeight:'700',
+        fontSize:'18px',
+        fontWeight:'600',
         cursor: 'pointer',
 
     }
     
     return (
-        <div>
             
-        <div style={{display:'flex'}}>
-            <img src={ppumi}></img>
-            <form onSubmit={onSubmit} style={BoxStyle}>
+        <div style={{display:'flex', justifyContent:'center',height:'100vh',}}>
+            <div style={{width:'50%', height:'100%', display:'flex', justifyContent:'center', alignItems:'center' }}>
+                <img src={ppumi}></img>
+            </div>
+            <form onSubmit={onSubmit} style={{width:'50%', height:'100%', 
+                display:'flex', flexDirection:'column', 
+                alignItems:'center',justifyContent:'center', 
+                backgroundColor:'#FFFFFF',padding:'5px', gap:'10px'}}>
+                
                 <p>어서오세요. 쁘미반에</p>
-                <div style = {{display:'flex',flexDirection:'column',gap:'10px'}}>
                     <input 
                         name="email"
                         type="email"
@@ -113,13 +112,15 @@ const Auth = () => {
                         type="submit" 
                         value={newAccount?"Create Account":"Login"}
                         style={buttonStyle} />
-                    <span
+                    <span style={{cursor:'pointer'}}
                         onClick={toggleAccount}>{newAccount? "로그인":"계정이 없나요? 회원가입"} 하러가기</span>
-                </div>
+                
+                
             </form>
         </div> 
-        </div>
+        
     );
 };
 
 export default Auth;
+
